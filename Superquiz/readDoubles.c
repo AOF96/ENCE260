@@ -12,38 +12,60 @@
 
 int readDoubles(int n, double data[])
 {
-    //int c = 0;
+    int c = 0;
     double number = 0;
     int count = 0;
 
-    while ((scanf("%lf", &number)) != EOF && count < n ) {
+    while ((scanf("%lf", &number)) != EOF && count < n && (c = getchar()) != EOF) {
         data[count] = number;
         count++;
+        if (count == n) {
+            return count;
+        }
+
     }
 
-    data[count] = 0;
     return count;
-
-    //printf("Read %d values\n", count);
-
-    //int i = 0;
-    //while (data[i] != '\0') {
-    //printf("%lf\n", data[i]);
-    //i++;
-    //}
 }
 
 
 int main(void)
 {
+    //Test1.txt code:
 
-    double data[5] = {0.0};
-    int numRead = 0;
+    //~ double data[5] = {0.0};
+    //~ int numRead = 0;
 
-    numRead = readDoubles(4, data);
-    printf("Read %d values:\n", numRead);
-    for (int i = 0; i < numRead; i++) {
-        printf("%0.3lf\n", data[i]);
-    }
+    //~ numRead = readDoubles(4, data);
+    //~ printf("Read %d values:\n", numRead);
+    //~ for (int i = 0; i < numRead; i++) {
+    //~ printf("%0.3lf\n", data[i]);
+    //~ }
+
+    //Test2.txt code:
+
+    //~ double data[6] = {0.0};
+    //~ int numRead = 0;
+
+    //~ numRead = readDoubles(6, data);
+    //~ printf("Read %d values:\n", numRead);
+    //~ for (int i = 0; i < numRead; i++) {
+    //~ printf("%0.3lf\n", data[i]);
+    //~ }
+
+
+    //Test3.txt code:
+
+    //~ double data[1] = {0.0};
+    //~ int numRead = 0;
+
+    //~ numRead = readDoubles(1, data);
+    //~ printf("Read %d values:\n", numRead);
+    //~ for (int i = 0; i < numRead; i++) {
+    //~ printf("%0.3lf\n", data[i]);
+    //~ }
+
+
+
     return EXIT_SUCCESS;
 }
