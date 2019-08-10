@@ -45,7 +45,7 @@ void smoothData(int n, double data[])
     data[n - 1] = last;
 }
 
-// I = %d.
+
 int main(void)
 {
     double data[100000] = {0.0};
@@ -54,35 +54,41 @@ int main(void)
     int lower_threshold = 0;
     double recorded_time = 0.0;
     double max1, max2;
+
     int all_data = readDoubles(n, data);
-    smoothData(n, data);
-    for (int j = 0; j < all_data; j++){
-        printf("%lf, ", data[j]);
-    }
+    smoothData(all_data, data);
+
     max1 = data[0];
     max2 = recorded_time;
     for (int i = 0; i < all_data; i++) {
+
         if (data[i] > max1) {
             max1 = data[i];
             max2 = recorded_time;
         }
+
         if (data[i] > CRITICAL_HIGH) {
+
             if (upper_threshold == 0) {
                 printf("Acceleration of 9.81 m/sec^2 exceeded at t = %.2lf secs.\n", recorded_time);
                 upper_threshold = 1;
                 lower_threshold = 0;
             }
+
             if (lower_threshold == 1) {
                 printf("Acceleration of 9.81 m/sec^2 exceeded at t = %.2lf secs.\n", recorded_time);
                 lower_threshold = 0;
             }
         }
+
         if (data[i] < CRITICAL_LOW) {
             lower_threshold = 1;
         }
+
         recorded_time += 0.01;
     }
     printf("\n");
     printf("Maximum acceleration: %.2lf m/sec^2 at t = %.2lf secs.\n", max1, max2);
+
     return EXIT_SUCCESS;
 }
