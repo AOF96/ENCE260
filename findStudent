@@ -1,0 +1,15 @@
+const Student* findStudent(const Student* studentList, const char* name)
+{
+	
+	while (studentList != NULL) {
+		if (strcmp(studentList->name, name) == 0) {
+			return studentList;
+		
+		}
+		studentList = studentList->next;
+		
+	}
+	
+	return studentList;
+	
+}
