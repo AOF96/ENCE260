@@ -20,7 +20,7 @@ int main (void)
     pio_config_set(LEDMAT_COL5_PIO, PIO_OUTPUT_HIGH);
 
     /* Set up pacer with a frequency of 50 Hz.  */
-    pacer_init (10);
+    pacer_init (90);
     int state = 0;
     while (1) {
         /* Pace the loop.  */
@@ -30,11 +30,13 @@ int main (void)
            displaying only three corner LEDs.  */
         if (state == 0) {
             pio_output_low(LEDMAT_ROW1_PIO);
+            pio_output_high(LEDMAT_COL5_PIO);
             pio_output_low(LEDMAT_COL1_PIO);
             pio_output_low(LEDMAT_ROW7_PIO);
             state = 1;
 ;        } else {
-            pio_output_high(LEDMAT_ROW1_PIO);
+            pio_output_low(LEDMAT_ROW1_PIO);
+            pio_output_low(LEDMAT_COL5_PIO);
             pio_output_high(LEDMAT_COL1_PIO);
             pio_output_high(LEDMAT_ROW7_PIO);
             state = 0;
