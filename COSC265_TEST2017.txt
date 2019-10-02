@@ -1,0 +1,61 @@
+1a.
+create table JobSkill
+(jobName varchar(20) not null,
+ skillCode char not null
+    constraint valid_code check (skillCode in ('S', 'F', 'C', 'D')),
+rankValue smallint,
+primary key (jobName, skillCode));
+
+1b.
+INSERT INTO JobSkill VALUES ('SWDeveloper', 'C', 2);
+INSERT INTO JobSkill VALUES ('SWDeveloper', 'D', 3);
+INSERT INTO JobSkill VALUES ('SWDeveloper', 'S', 1);
+INSERT INTO JobSkill VALUES ('Lifeguard', 'F', 2);
+INSERT INTO JobSkill VALUES ('Lifeguard', 'S', 1);
+
+1c.
+select count(*)                      
+from jobSkill                   
+
+1d.
+update creature
+set c_name = 'Smeagol'
+where c_id = 7;
+
+2a.
+select distinct c_name
+from creature join achievement on (creature.c_id = achievement.c_id) join skill on (achievement.s_code = skill.s_code)
+where skill.s_weight <= 0.5
+order by creature.c_name
+
+2b.
+select distinct c_name
+from creature
+where c_id IN (select c_id
+                        from achievement
+                        where s_code in (select s_code
+                                          from skill
+                                          where s_weight <= 0.5))
+order by creature.c_name
+
+2c.
+select c1.c_type, count(*) as count1, avg(score) as avg_score
+from creature c1 join achievement a1 on (c1.c_id = a1.c_id)
+group by c_type
+order by count1 desc;
+
+
+2d.
+
+
+3a.
+create view ACH_VIEW as 
+select creature.c_id, creature.c_name, creature.c_type, achievement.s_code, achievement.score, skill.s_desc
+from creature join achievement on (creature.c_id = achievement.c_id) join skill on (achievement.s_code = skill.s_code)
+
+3b.
+select * 
+from ach_view
+WHERE C_ID >= 1 and C_ID <= 4
+
+
