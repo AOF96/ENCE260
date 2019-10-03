@@ -58,4 +58,16 @@ select *
 from ach_view
 WHERE C_ID >= 1 and C_ID <= 4
 
+3c.
+create or replace trigger update_table
+instead of insert on ach_view
+begin
+    insert into creature (c_id, c_name, c_type) 
+        values (:new.c_id, :new.c_name, :new.c_type);
+    insert into achievement (s_code, score)
+        values (:new.s_code, :new.score);
+end;
+        
+
+
 
