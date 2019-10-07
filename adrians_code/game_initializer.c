@@ -104,7 +104,7 @@ int set_players(void)
         if (navswitch_push_event_p (NAVSWITCH_SOUTH)) {
             choice = player1;
         }
-        display_character(choice);
+        
 
         if (navswitch_push_event_p (NAVSWITCH_PUSH)) {
             int result;
@@ -113,7 +113,7 @@ int set_players(void)
 
         }
 
-
+        display_character(choice);
 
 
 
