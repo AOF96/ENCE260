@@ -108,18 +108,14 @@ int set_players(void)
 
 
         if (navswitch_push_event_p (NAVSWITCH_PUSH)) {
-            int result;
+            //int result;
             //~ result = support_function(choice);
             //~ (result == 1) ? (done = 1):(done = 0);
 
-            char ch = 'x';
             ir_uart_putc(choice);
 
 
-            if (ir_uart_read_ready_p ()) {
-                ch = ir_uart_getc ();
-                choice = ch;
-            }
+            
 
 
             //~ if ((strcmp(&ch, &choice) != 0)) {
@@ -128,7 +124,12 @@ int set_players(void)
             //~ } 
 
         }
-
+        
+        if (ir_uart_read_ready_p ()) {
+                char ch;
+                ch = ir_uart_getc ();
+                choice = ch;
+            }
         display_character(choice);
 
 
