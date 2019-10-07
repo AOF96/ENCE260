@@ -118,14 +118,14 @@ int set_players(void)
 
             if (ir_uart_read_ready_p ()) {
                 ch = ir_uart_getc ();
-
+                choice = ch;
             }
 
 
-            if ((strcmp(&ch, &choice) != 0)) {
-                choice = ch;
+            //~ if ((strcmp(&ch, &choice) != 0)) {
+                //~ choice = ch;
 
-            } 
+            //~ } 
 
         }
 
