@@ -85,6 +85,7 @@ int set_players(void)
     tinygl_text_dir_set(TINYGL_TEXT_DIR_ROTATE);
     pacer_init (PACER_RATE);
     navswitch_init();
+    ir_uart_init();
 
     //int player_number;
     char player1 = '1';
@@ -128,7 +129,7 @@ int set_players(void)
         if (ir_uart_read_ready_p ()) {
                 char ch;
                 ch = ir_uart_getc ();
-                choice = ch;
+                ch != choice ? (done = 1): (done = 0);
             }
         display_character(choice);
 
