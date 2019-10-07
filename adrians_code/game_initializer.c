@@ -58,14 +58,14 @@ int support_function(int choice)
     char ch = 'x';
     ir_uart_putc(choice);
 
-    while (ch == 'x') {
-        if (ir_uart_read_ready_p ()) {
-            ch = ir_uart_getc ();
+    
+    if (ir_uart_read_ready_p ()) {
+        ch = ir_uart_getc ();
 
-        }
     }
+    
 
-    if (choice != ch) {
+    if (choice == ch || choice == 'x') {
         return 0;
 
     } else {
