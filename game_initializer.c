@@ -122,8 +122,8 @@ int set_players(void)
             }
 
 
-            if ((strcmp(ch, choice) != 0)) {
-                choice = 1;
+            if ((strcmp(&ch, &choice) != 0)) {
+                choice = ch;
 
             } 
 
